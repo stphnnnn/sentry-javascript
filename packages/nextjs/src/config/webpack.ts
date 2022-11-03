@@ -408,7 +408,8 @@ export function getWebpackPluginOptions(
   const isWebpack5 = webpack.version.startsWith('5');
   const isServerless = userNextConfig.target === 'experimental-serverless-trace';
   const hasSentryProperties = fs.existsSync(path.resolve(projectDir, 'sentry.properties'));
-  const urlPrefix = userNextConfig.basePath ? `~${userNextConfig.basePath}/_next` : '~/_next';
+
+  const urlPrefix = ['~', userNextConfig.assetPrefix, userNextConfig.basePath, '/_next'].filter(Boolean).join('');
 
   const serverInclude = isServerless
     ? [{ paths: [`${distDir}/serverless/`], urlPrefix: `${urlPrefix}/serverless` }]

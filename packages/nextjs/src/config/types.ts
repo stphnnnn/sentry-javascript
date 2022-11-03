@@ -30,6 +30,8 @@ export type NextConfigObject = {
   distDir?: string;
   // The root at which the nextjs app will be served (defaults to "/")
   basePath?: string;
+  // The root at which nextjs assets will be served (defaults to "/")
+  assetPrefix?: string;
   // Config which will be available at runtime
   publicRuntimeConfig?: { [key: string]: unknown };
   // File extensions that count as pages in the `pages/` directory
